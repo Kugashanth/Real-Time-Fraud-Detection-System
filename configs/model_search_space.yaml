@@ -1,0 +1,24 @@
+optuna:
+  n_trials: 50
+  cv_folds: 5
+  scoring: "average_precision"
+  random_state: 42
+
+logistic_regression:
+  c_min: 0.001
+  c_max: 10.0
+  l1_ratios: [0.1, 0.5, 0.9]
+
+random_forest:
+  n_estimators: [100, 300, 500]
+  max_depth: [6, 10, 16]
+  min_samples_leaf: [2, 5, 10]
+
+xgboost:
+  n_estimators_range: [200, 800]
+  max_depth_range: [3, 9]
+  learning_rate_range: [0.01, 0.15]
+  subsample_range: [0.6, 1.0]
+  colsample_bytree_range: [0.6, 1.0]
+  reg_alpha_range: [0.001, 10.0]
+  reg_lambda_range: [0.001, 10.0]

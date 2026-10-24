@@ -1,0 +1,11 @@
+drift_detection:
+  window_size_requests: 5000
+  psi_warning_threshold: 0.15
+  psi_critical_threshold: 0.25
+  ks_p_value_threshold: 0.01
+
+performance_sla:
+  min_acceptable_pr_auc: 0.78
+  max_cbpe_pr_auc_drop: 0.05
+  expected_fraud_flag_rate_min: 0.0005
+  expected_fraud_flag_rate_max: 0.0060

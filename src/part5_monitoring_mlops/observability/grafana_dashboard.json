@@ -1,0 +1,26 @@
+{
+  "title": "Real-Time Fraud Detection & Drift MLOps Dashboard",
+  "uid": "fraud-mlops-v1",
+  "panels": [
+    {
+      "id": 1,
+      "title": "API Inference Latency (P50 / P95 / P99 ms)",
+      "type": "timeseries"
+    },
+    {
+      "id": 2,
+      "title": "Hourly Fraud Block & Manual Review Rate (%)",
+      "type": "timeseries"
+    },
+    {
+      "id": 3,
+      "title": "Feature Drift PSI (Amount, V14, V17, tx_count_1h)",
+      "type": "gauge"
+    },
+    {
+      "id": 4,
+      "title": "NannyML CBPE Estimated PR-AUC vs Delayed Chargebacks",
+      "type": "timeseries"
+    }
+  ]
+}

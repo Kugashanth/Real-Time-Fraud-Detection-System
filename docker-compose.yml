@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  fraud-api:
+    build:
+      context: .
+      dockerfile: src/part4_api_serving/Dockerfile
+    container_name: fraud-detection-api
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - MODEL_ONNX_PATH=artifacts/champion_model.onnx
+      - THRESHOLD_CONFIG_PATH=artifacts/threshold_config.json
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./data:/app/data
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: fraud-velocity-redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.12.1
+    container_name: fraud-mlflow
+    ports:
+      - "5000:5000"
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns
+
+  prometheus:
+    image: prom/prometheus:v2.51.0
+    container_name: fraud-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./src/part5_monitoring_mlops/observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+  grafana:
+    image: grafana/grafana:10.4.1
+    container_name: fraud-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus

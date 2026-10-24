@@ -1,0 +1,12 @@
+business_costs:
+  false_negative_fraud_loss_usd: 150.00
+  false_positive_review_cost_usd: 2.50
+
+evaluation:
+  f_beta_weight: 2.0
+  calibration_method: "isotonic"
+  conformal_alpha: 0.05
+
+risk_tiers:
+  low_risk_upper_bound: 0.12
+  high_risk_lower_bound: 0.34

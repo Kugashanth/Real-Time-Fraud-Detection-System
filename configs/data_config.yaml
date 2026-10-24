@@ -1,0 +1,22 @@
+dataset:
+  raw_path: "data/raw/creditcard.csv"
+  processed_dir: "data/processed"
+  target_col: "Class"
+  amount_col: "Amount"
+  time_col: "Time"
+
+splitting:
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  random_state: 42
+
+resampling:
+  method: "SMOTEENN"
+  sampling_strategy: 0.15
+  k_neighbors: 5
+
+velocity_windows_seconds:
+  short_window: 600    # 10 minutes
+  medium_window: 3600  # 1 hour
+  long_window: 86400   # 24 hours

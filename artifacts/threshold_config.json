@@ -1,0 +1,10 @@
+{
+  "model_version": "xgboost-smoteenn-v1.0",
+  "optimal_cost_threshold": 0.315,
+  "optimal_f2_threshold": 0.285,
+  "low_risk_max": 0.12,
+  "high_risk_min": 0.315,
+  "fn_cost_usd": 150.0,
+  "fp_cost_usd": 2.5,
+  "conformal_alpha": 0.05
+}
